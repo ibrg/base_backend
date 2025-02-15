@@ -32,6 +32,8 @@ jobs:
       - name: Create .env file
         run: |
           echo "DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" >> .env
+          echo "DEBUG=${{ secrets.DEBUG }}" >> .env
+          echo "ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}" >> .env
 
       - name: Install the project
         run: uv sync --all-extras --dev
