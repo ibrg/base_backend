@@ -34,4 +34,4 @@ jobs:
       - name: Run tests
         env:
           DATABASE_URL: postgres://user:password@localhost:5432/test_db
-        run: uv run python manage.py test
+        run: uv run python src/manage.py test
