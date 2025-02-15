@@ -29,6 +29,10 @@ jobs:
         with:
           python-version-file: ".python-version"
 
+      - name: Create .env file
+        run: |
+          echo "DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" >> .env
+
       - name: Install the project
         run: uv sync --all-extras --dev
 
