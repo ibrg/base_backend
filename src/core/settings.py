@@ -85,7 +85,7 @@ DATABASES = {
         "USER": config("DATABASE_USER", default="postgres"),
         "PASSWORD": config("DATABASE_PASS", default=''),
         "HOST": config("DATABASE_HOST", default='localhost'),
-        "PORT": config("DATABASE_PORT", cast=int, default=5432),
+        "PORT": config("DATABASE_PORT",  default=5433),
         "CONN_MAX_AGE": config("CONN_MAX_AGE", cast=int, default=60),
         "OPTIONS": {
             "connect_timeout": 10,
