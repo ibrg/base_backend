@@ -81,14 +81,18 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": config("DATABASE_NAME"),
-        "USER": config("DATABASE_USER"),
-        "PASSWORD": config("DATABASE_PASS"),
-        "HOST": config("DATABASE_HOST"),
-        "PORT": config("DATABASE_PORT"),
+        "NAME": config("DATABASE_NAME", default='test_db'),
+        "USER": config("DATABASE_USER", default="postgres"),
+        "PASSWORD": config("DATABASE_PASS", default=''),
+        "HOST": config("DATABASE_HOST", default='localhost'),
+        "PORT": config("DATABASE_PORT", cast=int, default=5433),
+        "CONN_MAX_AGE": config("CONN_MAX_AGE", cast=int, default=60),
+        "OPTIONS": {
+            "connect_timeout": 10,
+            "options": "-c statement_timeout=30000",
+        },
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
